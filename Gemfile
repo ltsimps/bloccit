@@ -23,6 +23,10 @@ end
   gem 'coffee-rails', '~> 4.0.0'
 
 
+gem 'protected_attributes'
+
+gem 'faker'
+
 
 
 
