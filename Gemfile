@@ -22,8 +22,8 @@ end
   # Use CoffeeScript for .js.coffee assets and views
   gem 'coffee-rails', '~> 4.0.0'
 
+gem 'devise'
 
-gem 'protected_attributes'
 
 gem 'faker'
 
