@@ -28,7 +28,7 @@ gem 'devise'
 gem 'faker'
 
 
-
+#gem 'protected_attributes'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

@@ -1,9 +1,13 @@
 class PostsController < ApplicationController
+  
+
+
   def index
     @posts = Post.all 
   end
 
   def show
+    #@post = Post.find(params[:id])
     @post = Post.find(params[:id])
   end
 
@@ -18,7 +22,7 @@ class PostsController < ApplicationController
   
   def update
     @post = Post.find(params[:id])
-    if @post.update_attributes(params[:post])
+    if @post.update_attributes(post_params)
       flash[:notice] = "Post was updated."
       redirect_to @post
     else
@@ -28,7 +32,8 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(params[:post])
+    #@post = Post.new(post_params)
+    @post = current_user.post.build(params[:post])
     if @post.save
       flash[:notice] = "Post was saved."
       redirect_to @post
@@ -38,5 +43,10 @@ class PostsController < ApplicationController
     end
   end
 
+  
+    def post_params
+       params.permit(:email, :password, :password_confirmation, :remember_me, :name, :body, :title)
+
+    end
     
 end
