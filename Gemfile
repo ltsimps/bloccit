@@ -26,6 +26,7 @@ gem 'devise'
 
 
 gem 'faker'
+gem 'cancan'
 
 
 #gem 'protected_attributes'
