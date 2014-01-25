@@ -1,21 +1,21 @@
 class PostsController < ApplicationController
 
-  def index
-    @posts = Post.all 
-  end
 
   def show
+     @topic = Topic.find(params[:topic_id]) 
     #@post = Post.find(params[:id])
-    @post = Post.find(params[:id])
+    @post  = Post.find(params[:id])
   end
 
   def new
+    @topic = Topic.find(params[:topic_id])
     @post  = Post.new
     #authorize! :create, Post
     authorize! :create, Post, message: "You need to be a member to create a new post."
   end
 
   def edit
+    @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
     authorize! :edit, @post, message: "You need to own the post to edit it."
 
@@ -23,6 +23,7 @@ class PostsController < ApplicationController
 
   
   def update
+    @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
     authorize! :update, @post, message: "You need to own the post to edit it."
 
@@ -36,6 +37,7 @@ class PostsController < ApplicationController
   end
   
   def create
+    @topic = Topic.find(params[:topic_id]) 
     #@post = Post.new(post_params)
     @post = current_user.post.build(params[:post])
     authorize :create, @post, message: "You need to be signed up to do that."
