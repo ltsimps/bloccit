@@ -28,6 +28,8 @@ gem 'devise'
 gem 'faker'
 gem 'cancan'
 
+gem 'redcarpet'
+
 
 #gem 'protected_attributes'
 
