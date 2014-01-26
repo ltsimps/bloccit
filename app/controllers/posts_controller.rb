@@ -22,13 +22,43 @@ class PostsController < ApplicationController
   end
 
   
+  
+
+  def create
+    @topic = Topic.find(params[:topic_id]) 
+    @post = current_user.posts.build(post_params)
+
+     @post.topic  = @topic 
+    #@post.topic_id = @topic.id
+
+
+    authorize! :create, @post, message: "You need to be signed up to do that."
+    if @post.save
+      flash[:notice] = "Post was saved."
+      redirect_to [@topic, @post], notice: "Post was saved successfully."
+
+
+
+    else
+      flash[:error] = "There was an error saving the post. Please Try again."
+      render :new
+    end
+  end
+
+
+
+
+
+
+
+
   def update
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
     authorize! :update, @post, message: "You need to own the post to edit it."
 
     if @post.update_attributes(post_params)
-      flash[:notice] = "Post was updated."
+      redirect_to [@topic, @post], notice: "Post was saved successfully."
       redirect_to @post
     else
       flash[:error] = "There was an error saving the post. Please try again."
@@ -36,23 +66,9 @@ class PostsController < ApplicationController
     end
   end
   
-  def create
-    @topic = Topic.find(params[:topic_id]) 
-    #@post = Post.new(post_params)
-    @post = current_user.post.build(params[:post])
-    authorize :create, @post, message: "You need to be signed up to do that."
-    if @post.save
-      flash[:notice] = "Post was saved."
-      redirect_to @post
-    else
-      flash[:error] = "There was an error saving the post. Please Try again."
-      render :new
-    end
-  end
-
   
     def post_params
-       params.permit(:email, :password, :password_confirmation, :remember_me, :name, :body, :title)
+       params.require(:post).permit(:email, :password, :password_confirmation, :remember_me, :name, :body, :title, :topic_id)
 
     end
     
