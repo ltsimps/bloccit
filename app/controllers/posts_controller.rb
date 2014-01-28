@@ -68,7 +68,7 @@ class PostsController < ApplicationController
   
   
     def post_params
-       params.require(:post).permit(:email, :password, :password_confirmation, :remember_me, :name, :body, :title, :topic_id)
+       params.require(:post).permit(:email, :password, :password_confirmation, :remember_me, :name, :body, :title, :topic_id, :avatar)
 
     end
     
