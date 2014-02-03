@@ -1,8 +1,15 @@
-AWS_ACCESS_KEY_ID:
-AWS_SECRET_ACCESS_KEY:
+# Add application configuration variables here, as shown below.
+#
+# PUSHER_APP_ID: "2954"
+# PUSHER_KEY: 7381a978f7dd7f9a1117
+# PUSHER_SECRET: abdc3b896a0ffb85d373
+# STRIPE_API_KEY: EdAvEPVEC3LuaTg5Q3z6WbDVqZlcBQ8Z
+# STRIPE_PUBLIC_KEY: pk_BRgD57O8fHja9HxduJUszhef6jCyS
+AWS_ACCESS_KEY_ID: "AKIAJH5SOC6L2UIEEVFQ"
+AWS_SECRET_ACCESS_KEY: "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"
 development:
-  SENDGRID_USERNAME:
-  SENDGRID_PASSWORD:
-  AWS_BUCKET:
+  SENDGRID_USERNAME: "app21320478@heroku.com"
+  SENDGRID_PASSWORD: "nvn2yjhm"
+  AWS_BUCKET: ltsimps-bloccit-development
 production:
-  AWS_BUCKET:
+  AWS_BUCKET: ltsimps-bloccit-production

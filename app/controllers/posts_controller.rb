@@ -3,8 +3,10 @@ class PostsController < ApplicationController
 
   def show
      @topic = Topic.find(params[:topic_id]) 
-    #@post = Post.find(params[:id])
     @post  = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
+
   end
 
   def new
@@ -68,7 +70,7 @@ class PostsController < ApplicationController
   
   
     def post_params
-       params.require(:post).permit(:email, :password, :password_confirmation, :remember_me, :name, :body, :title, :topic_id, :avatar)
+       params.require(:post).permit(:email, :password, :password_confirmation, :remember_me, :name, :body, :title, :topic_id, :avatar, :provider, :uid)
 
     end
     

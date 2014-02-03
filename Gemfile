@@ -39,6 +39,9 @@ gem 'fog'
 
 gem 'figaro'
 
+gem 'omniauth-facebook'
+
+
 
 #gem 'protected_attributes'
 

@@ -45,7 +45,7 @@ end
 
 u = User.new(
   name: 'Admin User',
-  email: 'admin@example.com', 
+  email: 'ltsimpso@example.com', 
   password: 'helloworld', 
   password_confirmation: 'helloworld')
 u.skip_confirmation!
@@ -63,7 +63,7 @@ u.update_attribute(:role, 'moderator')
 
 u = User.new(
   name: 'Member User',
-  email: 'ltsimpso@gmail.com', 
+  email: 'ltsimpso@me.com', 
   password: 'helloworld', 
   password_confirmation: 'helloworld')
 u.skip_confirmation!
