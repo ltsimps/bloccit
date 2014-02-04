@@ -26,7 +26,8 @@ class CommentsController < ApplicationController
     @post = @topic.posts.find(params[:post_id])
     @comments = @post.comments
 
-    @comment = current_user.comments.build(params[:comment])
+  #  @comment = current_user.comments.build(post_params[:comment])
+    @comment = current_user.comments.build(post_params)
     @comment.post = @post
 
     authorize! :create, @comment, message: "You need be signed in to do that."
@@ -37,11 +38,12 @@ class CommentsController < ApplicationController
       flash[:error] = "There was an error saving the comment. Please try again."
       render 'posts/show'
     end
+ 
+  end
 
 
-    def post_params
+   def post_params
        params.require(:comment).permit( :body, :topic_id,  :post_id)
 
     end
-    
-  end
+end

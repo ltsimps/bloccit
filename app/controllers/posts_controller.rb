@@ -5,8 +5,8 @@ class PostsController < ApplicationController
      @topic = Topic.find(params[:topic_id]) 
     @post  = Post.find(params[:id])
     @comments = @post.comments
-    @comment = Comment.new
-
+    @comment = Comment.new(user: current_user)
+#    puts "COMMENT NEW = #{@comment.inspect}"
   end
 
   def new

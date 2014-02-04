@@ -41,6 +41,8 @@ gem 'figaro'
 
 gem 'omniauth-facebook'
 
+gem 'will_paginate', '~> 3.0'
+
 
 
 #gem 'protected_attributes'
