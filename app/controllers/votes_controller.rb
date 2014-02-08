@@ -23,6 +23,8 @@ class VotesController < ApplicationController
     @post = @topic.posts.find(params[:post_id])
     authorize! :create, Vote, message: "You need to be a user to do that."
 
+Post.find_by_id(2)
+Post.find_all_by_id(2)
 
     @vote = @post.votes.where(user_id: current_user.id).first
   end

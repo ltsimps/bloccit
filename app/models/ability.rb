@@ -9,6 +9,8 @@ class Ability
       can :manage, Post, :user_id => user.id
       can :manage, Comment, :user_id => user.id
       can :create, Vote
+      can :read, Topic
+
     end
 
 
@@ -23,8 +25,11 @@ class Ability
       can :manage, :all
     end
 
-    can :read, :all
+    
+    can :read, Topic, public: true
+    can :read, Post
 
+   
 
       end
 end

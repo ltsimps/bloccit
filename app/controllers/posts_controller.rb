@@ -3,6 +3,8 @@ class PostsController < ApplicationController
 
   def show
      @topic = Topic.find(params[:topic_id]) 
+     authorize! :read, @topic, message: "You need to be signed-in to do that."
+
     @post  = Post.find(params[:id])
     @comments = @post.comments
     @comment = Comment.new(user: current_user)
@@ -88,7 +90,7 @@ class PostsController < ApplicationController
   
   
     def post_params
-       params.require(:post).permit(:email, :password, :password_confirmation, :remember_me, :name, :body, :title, :topic_id, :avatar, :provider, :uid)
+       params.require(:post).permit(:email, :password, :password_confirmation, :remember_me, :name, :body, :title, :topic_id, :avatar, :provider, :uid, :email_favorites)
 
     end
     
