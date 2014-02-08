@@ -11,6 +11,7 @@ group :development do
   gem 'sqlite3'
 end
 
+gem 'quiet_assets'
 
   gem 'bootstrap-sass'
 
