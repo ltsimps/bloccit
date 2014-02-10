@@ -4,7 +4,19 @@ class TopicsController < ApplicationController
      #@topics = Topic.paginate(page: params[:page], per_page: 10) # add this line
      @topics = Topic.visible_to(current_user).paginate(page: params[:page], per_page: 10)
 
+     z = []
+     @topics.each do |t|
+      h = { name: t.name, posts: [] }
+      t.posts.each do |p|
+        h[:posts] << p
+      end
+      z << h
+    end
 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @topic }
+    end
   end
 
   def new
