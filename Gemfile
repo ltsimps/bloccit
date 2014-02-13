@@ -11,6 +11,10 @@ group :development do
   gem 'sqlite3'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+end
+
 gem 'quiet_assets'
 
   gem 'bootstrap-sass'
@@ -24,6 +28,9 @@ gem 'quiet_assets'
   gem 'coffee-rails', '~> 4.0.0'
 
 gem 'devise'
+
+  gem 'factory_girl_rails', '~> 4.0'
+
 
 
 gem 'faker'
