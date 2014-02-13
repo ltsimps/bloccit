@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+    respond_to :html, :js
+
   
 #{
 #	comment: {
@@ -27,7 +30,7 @@ class CommentsController < ApplicationController
     @comments = @post.comments
 
   #  @comment = current_user.comments.build(post_params[:comment])
-    @comment = current_user.comments.build(post_params)
+    @comment = current_user.comments.build(comment_params)
     @comment.post = @post
 
     authorize! :create, @comment, message: "You need be signed in to do that."
@@ -42,21 +45,37 @@ class CommentsController < ApplicationController
   end
 
 
-   def destroy
+  
+
+    def destroy
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
 
     @comment = @post.comments.find(params[:id])
-
     authorize! :destroy, @comment, message: "You need to own the comment to delete it."
+
     if @comment.destroy
       flash[:notice] = "Comment was removed."
-      redirect_to [@topic, @post]
     else
       flash[:error] = "Comment couldn't be deleted. Try again."
-      redirect_to [@topic, @post]
+    end
+
+    respond_with(@comment) do |f|
+      f.html { redirect_to [@topic, @post] }
     end
   end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
    def comment_params
