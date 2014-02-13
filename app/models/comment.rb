@@ -2,6 +2,9 @@ class Comment < ActiveRecord::Base
   belongs_to :post
   belongs_to :user
   #attr_accessible :body
+
+  default_scope order('updated_at DESC')
+
    def send_favorite_emails
      # for every favorite associated with post, send email
      self.post.favorites.each do |favorite|
