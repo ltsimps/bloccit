@@ -33,10 +33,12 @@ Post.find_all_by_id(2)
    def update_vote(new_value)
     if @vote # if it exists, update it
       puts "Updating vote: #{@vote.inspect}"
-      @vote.update_attribute(:value, new_value)
+      puts "UPDATE_VOTE #{@vote.id}, post=#{@vote.post.id}, votes=#{@post.votes.inspect}, new_value=#{new_value}"
+      @vote.update_attribute(:value, @vote.value)
       #@vote.update_attributes(post_params, new_value)
     else # create it
       puts "Creating vote: post=#{@post.inspect}"
+      puts "UPDATE_VOTE NEW, post=#{@post.id}, votes=#{@post.votes.inspect}, new_value=#{new_value}"
       @vote = current_user.votes.create(value: new_value, post: @post)
     end
   end
