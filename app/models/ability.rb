@@ -11,6 +11,7 @@ class Ability
      if user.role? :member
       can :manage, Post, :user_id => user.id
       can :manage, Comment, :user_id => user.id
+      puts "ABILITY INITIALIZE, yes, I can vote"
       can :create, Vote
       can :read, Topic
 
