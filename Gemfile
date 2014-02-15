@@ -19,7 +19,7 @@ end
 
 gem 'quiet_assets'
 
-  gem 'bootstrap-sass' 
+  gem 'bootstrap-sass', '~>2.1'
 
   # Use SCSS for stylesheets
   gem 'sass-rails', '~> 4.0.0'
