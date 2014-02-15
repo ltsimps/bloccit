@@ -5,6 +5,9 @@ class Ability
      user ||= User.new
     # if a member, they can manage their own posts 
     # (or create new ones)
+
+    puts "ABILITY INITIALIZE, role=#{user.role}"
+
      if user.role? :member
       can :manage, Post, :user_id => user.id
       can :manage, Comment, :user_id => user.id

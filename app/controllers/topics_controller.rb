@@ -26,8 +26,10 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    
     authorize! :read, @topic, message: "You need to be signed-in to do that."
     @posts = @topic.posts.includes(:user).paginate(page: params[:page], per_page: 10)
+    puts "TOPICS SHOW, current_user=#{current_user.email}, role=#{current_user.role}"
     
     #@posts = @topic.posts
   end
